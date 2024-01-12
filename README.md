@@ -4,9 +4,10 @@ For more results about variation removal and signal conservation, please refer t
 
 # Repository strucuture
 `codes`: the directory contains the notebooks for reproducing the results  
-`data`: the directory contains the input files of different unwanted variations  
-`models`: the directory contains the trained models for different variation removal tasks  
-`imgs`: the directory contains the results images
+`imgs`: the directory contains the results images 
+The directory of `data` and `models` can be downloaded externally:  
+`data`: the directory contains the input files of different unwanted variations ()  
+`models`: the directory contains the trained models for different variation removal tasks (https://zenodo.org/records/10494738)
 # Usage
 The main packages for this work are:
 * torch==2.0.1
