@@ -1,6 +1,6 @@
 # DeepAdapter
 Accurate identification and correction of true biological signals from diverse undesirable variations in large-scale transcriptomes is essential for downstream discoveries. Herein, we develop a universal deep neural network, called DeepAdapter, to eliminate various undesirable variations from transcriptomic data. The innovation of our approach lies in automatic learning of the corresponding denoising strategies to adapt to different situations. The data-driven strategies are flexible and highly attuned to the transcriptomic data that requires denoising, yielding significant improvement in reducing undesirable variation originating from batches, sequencing platforms, and bio-samples with varied purity beyond manually designed schemes. Comprehensive evaluations across multiple batches, different RNA measurement technologies and heterogeneous bio-samples demonstrate that DeepAdapter can robustly correct diverse undesirable variations and accurately preserve biological signals. Our findings indicate that DeepAdapter can act as a versatile tool for the comprehensive denoising of the large and heterogeneous transcriptome across a wide variety of application scenarios.   
-For more results about variation removal and signal conservation, please refer to our article (XXX.XXX).
+For more results about variation removal and signal conservation, please refer to our article (https://www.biorxiv.org/content/10.1101/2024.02.04.578839v1).
 
 # Repository strucuture
 `codes`: the directory contains the notebooks for reproducing the results  
