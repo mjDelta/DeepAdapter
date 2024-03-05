@@ -6,7 +6,7 @@ For more results about variation removal and signal conservation, please refer t
 `codes`: the directory contains the notebooks for reproducing the results  
 `imgs`: the directory contains the results images 
 The directory of `data` and `models` can be downloaded externally:  
-`data`: the directory contains the input files of different unwanted variations ()  
+`data`: the directory contains the input files of different unwanted variations (https://zenodo.org/records/10494751)  
 `models`: the directory contains the trained models for different variation removal tasks (https://zenodo.org/records/10494738)
 # Usage
 The main packages for this work are:
