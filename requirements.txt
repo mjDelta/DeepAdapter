@@ -1,0 +1,10 @@
+notebook
+matplotlib
+numpy<2
+openpyxl
+pandas
+scikit-learn
+scipy
+tqdm
+umap-learn
+torch
