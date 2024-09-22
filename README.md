@@ -2,11 +2,14 @@
 ## A self-adaptive and versatile tool for eliminating multiple undesirable variations from transcriptome
 Codes and tutorial for [A self-adaptive and versatile tool for eliminating multiple undesirable variations from transcriptome](https://www.biorxiv.org/content/10.1101/2024.02.04.578839v1).
 
-## Updates
-- the package is available in `pypi` now. Please install it with `pip install deepadapter`
+## Installation
+Please install it with
+```sh
+$ pip install deepadapter
+```
 
 # Get started
-## Before training the codes, download our tutorials.
+## Before runing the codes, download our tutorials.
 * `DA-Example-Tutorial.ipynb`: the tutorial of re-training DeepAdapter using the example dataset ([click here to download](https://github.com/mjDelta/DeepAdapter/blob/main/DA-Example-Tutorial.ipynb));
 * `DA-YourOwnData-Tutorial.ipynb`: the tutorial of training DeepAdapter using your own dataset ([click here to download](https://github.com/mjDelta/DeepAdapter/blob/main/DA-YourOwnData-Tutorial.ipynb)).
 
