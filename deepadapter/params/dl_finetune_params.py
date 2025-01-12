@@ -15,6 +15,7 @@ def load_dl_params():
 	parser.add_argument("--lr_upper_batch", default = 5e-4, type = float)
 	parser.add_argument("--lambda_batch", default = 0.01, type = float)
 	parser.add_argument("--lambda_ae", default = 1, type = float)
+	parser.add_argument("--ft_num", default = 24, type = int)
 	parser.add_argument("-f", "--fff", help="a dummy argument to fool ipython", default="1")
 	args = parser.parse_args()
 	return args

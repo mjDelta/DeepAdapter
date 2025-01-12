@@ -83,8 +83,8 @@ class LoadTransData:
 		all_dis_set = sorted(set(dises1 + dises2))
 		dis2label, label2dis = {}, {}
 		for i, d in enumerate(all_dis_set):
-		    dis2label[d] = i
-		    label2dis[i] = d
+			dis2label[d] = i
+			label2dis[i] = d
 		diseases = np.array(dises1 + dises2)
 		dis_labels = np.array([dis2label[t] for t in diseases])
 		return dis_labels, diseases, dis2label, label2dis
@@ -96,7 +96,7 @@ class LoadTransData:
 		dis = str(dis)
 		return dis
 
-	def load_data_quartet(self):
+	def load_data_quartet(self, renameENSG = True):
 		info_path = os.path.join(self.quartet_dir, "OMIX002254_studydesign.csv")
 		data_path = os.path.join(self.quartet_dir, "OMIX002254-01.csv")
 		info_df = pd.read_csv(info_path, sep = ",")
@@ -115,9 +115,10 @@ class LoadTransData:
 		print(f"Load quartet, size of {data_raw.shape}")
 
 		## rename quartet columns
-		ensg2symbol = self.load_ensg2symbol()
-		data_raw = data_raw.rename(columns=ensg2symbol)
-		print(f"Rename quartet's columns to ENSG symbol")
+		if renameENSG:
+			ensg2symbol = self.load_ensg2symbol()
+			data_raw = data_raw.rename(columns=ensg2symbol)
+			print(f"Rename quartet's columns to ENSG symbol")
 		return data_raw, ids, batches, np.array(donors)
 
 	def load_lincs_lds1593(self):
@@ -255,31 +256,52 @@ def transform_hot(ys):
 	hots = np.eye(len(ys_set))[ys]
 	return hots	
 
+def data_split_random_notest(data, labels, labels_onehot, ids, val_ratio = 0.2):
+	rng = np.random.RandomState(0)
+	all_ids = np.arange(len(data))
+	all_idxs = np.arange(len(data))
+	rng.shuffle(all_idxs)
+
+	tot_val_idxs = rng.choice(all_idxs, size = int(val_ratio*len(all_idxs)), replace = False)
+	tot_train_idxs = np.array([t for t in all_idxs if t not in tot_val_idxs])
+
+	print(tot_train_idxs.shape, tot_val_idxs.shape)
+
+	train_data, train_labels, train_labels_hot = data[tot_train_idxs], labels[tot_train_idxs], labels_onehot[tot_train_idxs]
+	val_data, val_labels, val_labels_hot = data[tot_val_idxs], labels[tot_val_idxs], labels_onehot[tot_val_idxs]
+	train_ids, val_ids = ids[tot_train_idxs], ids[tot_val_idxs]
+	print(train_data.shape, train_labels_hot.shape)
+	print(val_data.shape, val_labels_hot.shape)
+	return train_data, train_labels, train_labels_hot, \
+	val_data, val_labels, val_labels_hot, \
+	train_ids, val_ids, \
+	tot_train_idxs, tot_val_idxs
+	
 def data_split_random(data, labels, labels_onehot, ids, train_val_ratio = 0.8, val_ratio = 0.2):
-    rng = np.random.RandomState(0)
-    all_ids = np.arange(len(data))
-    all_idxs = np.arange(len(data))
-    rng.shuffle(all_idxs)
+	rng = np.random.RandomState(0)
+	all_ids = np.arange(len(data))
+	all_idxs = np.arange(len(data))
+	rng.shuffle(all_idxs)
 
-    tot_train_val_idxs = rng.choice(all_idxs, size = int(train_val_ratio*len(all_idxs)), replace = False)
-    tot_test_idxs = np.array([t for t in all_idxs if t not in tot_train_val_idxs])
-    tot_val_idxs = rng.choice(tot_train_val_idxs, size = int(val_ratio*len(tot_train_val_idxs)), replace = False)
-    tot_train_idxs = np.array([t for t in tot_train_val_idxs if t not in tot_val_idxs])
+	tot_train_val_idxs = rng.choice(all_idxs, size = int(train_val_ratio*len(all_idxs)), replace = False)
+	tot_test_idxs = np.array([t for t in all_idxs if t not in tot_train_val_idxs])
+	tot_val_idxs = rng.choice(tot_train_val_idxs, size = int(val_ratio*len(tot_train_val_idxs)), replace = False)
+	tot_train_idxs = np.array([t for t in tot_train_val_idxs if t not in tot_val_idxs])
 
-    print(tot_train_idxs.shape, tot_val_idxs.shape, tot_test_idxs.shape)
+	print(tot_train_idxs.shape, tot_val_idxs.shape, tot_test_idxs.shape)
 
-    train_data, train_labels, train_labels_hot = data[tot_train_idxs], labels[tot_train_idxs], labels_onehot[tot_train_idxs]
-    val_data, val_labels, val_labels_hot = data[tot_val_idxs], labels[tot_val_idxs], labels_onehot[tot_val_idxs]
-    test_data, test_labels, test_labels_hot = data[tot_test_idxs], labels[tot_test_idxs], labels_onehot[tot_test_idxs]
-    train_ids, val_ids, test_ids = ids[tot_train_idxs], ids[tot_val_idxs], ids[tot_test_idxs]
-    print(train_data.shape, train_labels_hot.shape)
-    print(val_data.shape, val_labels_hot.shape)
-    print(test_data.shape, test_labels_hot.shape)
-    return train_data, train_labels, train_labels_hot, \
-    val_data, val_labels, val_labels_hot, \
-    test_data, test_labels, test_labels_hot, \
-    train_ids, val_ids, test_ids, \
-    tot_train_val_idxs, tot_train_idxs, tot_val_idxs, tot_test_idxs
+	train_data, train_labels, train_labels_hot = data[tot_train_idxs], labels[tot_train_idxs], labels_onehot[tot_train_idxs]
+	val_data, val_labels, val_labels_hot = data[tot_val_idxs], labels[tot_val_idxs], labels_onehot[tot_val_idxs]
+	test_data, test_labels, test_labels_hot = data[tot_test_idxs], labels[tot_test_idxs], labels_onehot[tot_test_idxs]
+	train_ids, val_ids, test_ids = ids[tot_train_idxs], ids[tot_val_idxs], ids[tot_test_idxs]
+	print(train_data.shape, train_labels_hot.shape)
+	print(val_data.shape, val_labels_hot.shape)
+	print(test_data.shape, test_labels_hot.shape)
+	return train_data, train_labels, train_labels_hot, \
+	val_data, val_labels, val_labels_hot, \
+	test_data, test_labels, test_labels_hot, \
+	train_ids, val_ids, test_ids, \
+	tot_train_val_idxs, tot_train_idxs, tot_val_idxs, tot_test_idxs
 
 def data_split_lds1593(data, labels, labels_onehot, ids, infos, test_infos, val_ratio = 0.2):
 	rng = np.random.RandomState(0)
