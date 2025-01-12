@@ -6,9 +6,9 @@ with open("README.md", "r") as fh:
 
 setup(
 	name='deepadapter',
-	version='0.0.9',
+	version='1.0.0',
 	author='MJ Zhang',
-	author_email='mengji.zhang@gmail.com',
+	author_email='mengji.zhang0809@gmail.com',
 	description=long_description,
 	packages=(
         find_packages() +
