@@ -41,7 +41,7 @@ The gene set used in pretrained models can be found in `trained_models/[model]/g
 
 Double-click to open tutorials after launching jupyter notebook
 * `DA-Example-finetune.ipynb`: the tutorial of fine-tuning DeepAdapter using the example dataset ([click here to download](https://github.com/mjDelta/DeepAdapter/blob/main/DA-Example-Finetune.ipynb));;
-* `DA-YourOwnData-finetune.ipynb`: the tutorial of fine-tuning DeepAdapter using your own dataset ([click here to download](https://github.com/mjDelta/DeepAdapter/blob/main/DA-Example-Finetune.ipynb));.
+* `DA-YourOwnData-finetune.ipynb`: the tutorial of fine-tuning DeepAdapter using your own dataset ([click here to download](https://github.com/mjDelta/DeepAdapter/blob/main/DA-YourOwnData-Finetune.ipynb));.
 
 **After opening the tutorials, please press Shift-Enter to execute a "cell" in `.ipynb`.**
 
