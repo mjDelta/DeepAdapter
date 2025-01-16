@@ -76,8 +76,9 @@ After downloading, place the datasets in the `data/` directory located in the sa
 * purity datasets: `data/purity_data/`
 
 ### Pretrained models
-Please find the pretrained models in folder `models`.
+Please find the pretrained models in folder `models` ([click here to download](https://github.com/mjDelta/DeepAdapter/blob/main/models)).
 * batch integration: `models/batch_LINCS` and `models/batch_Quartet`
 * platform integration: `models/platform`
 * purity integration: `models/purity`
+
 After downloading, place the models in the `models/` directory located in the same hierarchy as this tutorial.
