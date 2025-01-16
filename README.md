@@ -4,10 +4,11 @@ Codes and tutorial for [A self-adaptive and versatile tool for eliminating multi
 
 
 ## Installation
-Please install it with
+We add scripts for fine-tuning. Please install it with
 ```sh
-$ pip install deepadapter
+$ pip install deepadapter==1.0.1
 ```
+**Note: only deepadapter (v1.0.1) supports the fine-tuning**
 
 # Get started
 ## Before runing the codes, download our tutorials.
@@ -73,5 +74,10 @@ After downloading, place the datasets in the `data/` directory located in the sa
 * batch datasets: `data/batch_data/`
 * platform datasets: `data/platform_data/`
 * purity datasets: `data/purity_data/`
+
 ### Pretrained models
 Please find the pretrained models in folder `models`.
+* batch integration: `models/batch_LINCS` and `models/batch_Quartet`
+* platform integration: `models/platform`
+* purity integration: `models/purity`
+After downloading, place the models in the `models/` directory located in the same hierarchy as this tutorial.
