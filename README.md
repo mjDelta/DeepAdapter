@@ -23,7 +23,7 @@ $ conda activate DA
 **Step 2**: install the package with `pip`
 ```sh
 $ # Install the our package
-$ pip install deepadapter
+$ pip install deepadapter==1.1.0
 ```
 **Step 3**: confirm that torch+cuda is installed
 ```sh
