@@ -6,9 +6,9 @@ Codes and tutorial for [A self-adaptive and versatile tool for eliminating multi
 ## Installation
 We add scripts for fine-tuning. Please install it with
 ```sh
-$ pip install deepadapter==1.0.1
+$ pip install deepadapter==1.1.0
 ```
-**Note: only deepadapter (v1.0.1) supports the fine-tuning**
+**Note: only deepadapter (v1.1.0) supports the fine-tuning**
 
 # Get started
 
@@ -25,7 +25,18 @@ $ conda activate DA
 $ # Install the our package
 $ pip install deepadapter
 ```
-**Step 3**: launch jupyter notebook and double-click to open tutorials
+**Step 3**: confirm that torch+cuda is installed
+```sh
+$ python
+>>> import torch
+>>> torch.cuda.is_available()
+```
+If the output of `torch.cuda.is_available()` is `True`, then torch+cuda was installed successfully.
+If not, please install torch+cuda with
+```sh
+$ pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+```
+**Step 4**: launch jupyter notebook and double-click to open tutorials
 ```sh
 $ # Launch jupyter notebook
 $ jupyter notebook
