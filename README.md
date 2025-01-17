@@ -11,11 +11,8 @@ $ pip install deepadapter==1.0.1
 **Note: only deepadapter (v1.0.1) supports the fine-tuning**
 
 # Get started
-## Before runing the codes, download our tutorials.
-* `DA-Example-Tutorial.ipynb`: the tutorial of re-training DeepAdapter using the example dataset ([click here to download](https://github.com/mjDelta/DeepAdapter/blob/main/DA-Example-Tutorial.ipynb));
-* `DA-YourOwnData-Tutorial.ipynb`: the tutorial of training DeepAdapter using your own dataset ([click here to download](https://github.com/mjDelta/DeepAdapter/blob/main/DA-YourOwnData-Tutorial.ipynb)).
 
-## Re-train DeepAdapter with the provided example datsets or your own dataset
+## Running environment configuration
 **Step 1**: create a new conda environment
 ```sh
 $ # Create a new conda environment
@@ -35,6 +32,11 @@ $ jupyter notebook
 ```
 **After opening the tutorials, please press Shift-Enter to execute a "cell" in `.ipynb`.**
 
+## Train DeepAdapter with the provided example datsets or your own dataset
+Before runing the codes, download our tutorials.
+* `DA-Example-Tutorial.ipynb`: the tutorial of re-training DeepAdapter using the example dataset ([click here to download](https://github.com/mjDelta/DeepAdapter/blob/main/DA-Example-Tutorial.ipynb));
+* `DA-YourOwnData-Tutorial.ipynb`: the tutorial of training DeepAdapter using your own dataset ([click here to download](https://github.com/mjDelta/DeepAdapter/blob/main/DA-YourOwnData-Tutorial.ipynb)).
+
 ## Fine-tune DeepAdapter with limited data samples
 Before fine-tuning, make sure that the gene set in the small dataset the same as the the gene set used in pretrained models.
 The gene set used in pretrained models can be found in `trained_models/[model]/genes.csv`. **The order of gene set does not matter.**
@@ -45,7 +47,7 @@ Double-click to open tutorials after launching jupyter notebook
 
 **After opening the tutorials, please press Shift-Enter to execute a "cell" in `.ipynb`.**
 
-## Benchmarking methods
+## Run the benchmarking methods
 The benchmarking methods can be found in `Benchmarking-methods.ipynb` ([click here to download](https://github.com/mjDelta/DeepAdapter/blob/main/Benchmarking-methods.ipynb)) and `Benchmarking-MNN.py` ([click here to download](https://github.com/mjDelta/DeepAdapter/blob/main/Benchmarking-MNN.py));.
 
 **Step 1**: run methods except MNN
@@ -62,8 +64,8 @@ $ pip install mnnpy==0.1.9.5 matplotlib tqdm umap-learn openpyxl scipy==1.5.4
 $ python Benchmarking-MNN.py
 ```
 
-## Resources
-### Datasets
+# Resources
+## Datasets
 Please download the open datasets in [Zenodo](https://zenodo.org/records/10494751).
 These datasets are collected from literatures to demonstrate multiple unwanted variations, including:
 * batch datasets: LINCS-DToxS ([van Hasselt et al. Nature Communications, 2020](https://www.nature.com/articles/s41467-020-18396-7)) and Quartet project ([Yu, Y. et al. Nature Biotechnology, 2023](https://www.nature.com/articles/s41587-023-01867-9)).
@@ -75,7 +77,7 @@ After downloading, place the datasets in the `data/` directory located in the sa
 * platform datasets: `data/platform_data/`
 * purity datasets: `data/purity_data/`
 
-### Pretrained models
+## Pretrained models
 Please find the pretrained models in folder `models` ([click here to download](https://zenodo.org/records/14664454)).
 * batch integration: `models/batch_LINCS` and `models/batch_Quartet`
 * platform integration: `models/platform`
